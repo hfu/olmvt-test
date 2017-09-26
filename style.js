@@ -25,8 +25,8 @@ function createDefaultStyle(r, g, b) {
       }
       text.getText().setText(name);
       fill.setColor('rgba(' + r + ', ' + g + ', ' + b + ', 0.5)');
-      stroke.setColor('rgba(255, 255, 255, 0.5)');
-      stroke.setWidth(0.5);
+      //stroke.setColor('rgba(255, 255, 255, 0.5)');
+      //stroke.setWidth(0.5);
       styles[length++] = text;
     }
     styles.length = length;
