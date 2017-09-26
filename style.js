@@ -5,7 +5,7 @@ function createDefaultStyle(r, g, b) {
   var line = new ol.style.Style({stroke: stroke});
   var text = new ol.style.Style({text: new ol.style.Text({
     text: '', fill: fill, stroke: stroke,
-    font: '8px "Open Sans", "Arial Unicode MS"'
+    font: '11px "Open Sans", "Arial Unicode MS"'
   })});
   var styles = [];
   return function(feature, resolution) {

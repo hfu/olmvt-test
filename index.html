@@ -14,37 +14,43 @@
 <body>
 <div id="map" class="map"></div>
 <script>
-var map = new ol.Map({
-  layers: [
-    new ol.layer.VectorTile({
-      source: new ol.source.VectorTile({
-        attributions: '<span style="color: rgb(255, 0, 0)">OpenMapTiles</span>',
-        format: new ol.format.MVT(),
-        url: 'https://free-0.tilehosting.com/data/v3/' +
-          '{z}/{x}/{y}.pbf.pict?key=zaiCRULFvWaid8EJxgsb'
-      }),
-      style: createDefaultStyle(255, 0, 0)
+var layers = [
+  new ol.layer.VectorTile({
+    source: new ol.source.VectorTile({
+      attributions: '<span style="color: rgb(255, 0, 0)">OpenMapTiles/OSM contributors</span>',
+      format: new ol.format.MVT(),
+      url: 'https://free-0.tilehosting.com/data/v3/' +
+        '{z}/{x}/{y}.pbf.pict?key=zaiCRULFvWaid8EJxgsb'
     }),
-    new ol.layer.VectorTile({
-      source: new ol.source.VectorTile({
-        attributions: '<span style="color: rgb(0, 0, 255)">Mapbox</span>',
-        format: new ol.format.MVT(),
-        url: 'https://a.tiles.mapbox.com/v4/mapbox.mapbox-streets-v7/' +
-          '{z}/{x}/{y}.mvt?access_token=pk.eyJ1IjoiaGZ1IiwiYSI6ImlRSGJVUTAifQ.rTx380smyvPc1gUfZv1cmw'
-      }),
-      style: createDefaultStyle(0, 0, 255)
-    })//,
-    /* commented out not to exceed the free-of-charge quota
-    new ol.layer.VectorTile({
-      source: new ol.source.VectorTile({
-        attributions: '<span style="color: rgb(0, 255, 0)">Mapzen</span>',
-        format: new ol.format.MVT(),
-        url: 'https://tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.mvt?api_key=vector-tiles-EAtlid0'
-      }),
-      style: createDefaultStyle(0, 255, 0)
-    })
-    */
-  ],
+    style: createDefaultStyle(255, 0, 0)
+  }),
+  new ol.layer.VectorTile({
+    source: new ol.source.VectorTile({
+      attributions: '<span style="color: rgb(0, 0, 255)">Mapbox/OSM contributors</span>',
+      format: new ol.format.MVT(),
+      url: 'https://a.tiles.mapbox.com/v4/mapbox.mapbox-streets-v7/' +
+        '{z}/{x}/{y}.mvt?access_token=pk.eyJ1IjoiaGZ1IiwiYSI6ImlRSGJVUTAifQ.rTx380smyvPc1gUfZv1cmw'
+    }),
+    style: createDefaultStyle(0, 0, 255)
+  })//,
+  /* commented out not to exceed the free-of-charge quota
+  new ol.layer.VectorTile({
+    source: new ol.source.VectorTile({
+      attributions: '<span style="color: rgb(0, 255, 0)">Mapzen</span>',
+      format: new ol.format.MVT(),
+      url: 'https://tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.mvt?api_key=vector-tiles-EAtlid0'
+    }),
+    style: createDefaultStyle(0, 255, 0)
+  })
+  */
+]
+for(i in layers) {
+  layers[i].on('precompose', function(evt) {
+    evt.context.globalCompositeOperation = 'multiply'
+  })
+}
+var map = new ol.Map({
+  layers: layers,
   target: 'map',
   view: new ol.View({
     center: [2367334.3889931543, 4100844.4690837963], zoom: 3
