@@ -33,7 +33,8 @@ var map = new ol.Map({
           '{z}/{x}/{y}.mvt?access_token=pk.eyJ1IjoiaGZ1IiwiYSI6ImlRSGJVUTAifQ.rTx380smyvPc1gUfZv1cmw'
       }),
       style: createDefaultStyle(0, 0, 255)
-    }),
+    })//,
+    /* commented out not to exceed the free-of-charge quota
     new ol.layer.VectorTile({
       source: new ol.source.VectorTile({
         attributions: '<span style="color: rgb(0, 255, 0)">Mapzen</span>',
@@ -42,6 +43,7 @@ var map = new ol.Map({
       }),
       style: createDefaultStyle(0, 255, 0)
     })
+    */
   ],
   target: 'map',
   view: new ol.View({
